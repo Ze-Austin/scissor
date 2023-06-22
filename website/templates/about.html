@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %}
+{% if current_user.is_authenticated %}
+<h2>Hello, {{ current_user.username }}! <span class="wave">👋🏾</span></h2>
+{% else %}
+<h2>Hello and Welcome! <span class="wave">👋🏾</span></h2>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename= 'css/main.css')}}"
+    />
+    <title>Scissor</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <a href="{{url_for('index')}}">
+          <img
+            src="{{url_for('static',filename= 'scissor-logo/default.png')}}"
+            alt="Logo"
+            width="120"
+            height="40"
+            class="logo"
+          />
+        </a>
+      </div>
+      <div class="nav-bar">
+        {% if current_user.is_authenticated %}
+        <a href="{{url_for('index')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <!-- <a href="{{url_for('links')}}">Links</a> -->
+        <a href="{{url_for('logout')}}">Log Out</a>
+        {% else %}
+        <a href="{{url_for('index')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <a href="{{url_for('register')}}">Sign Up</a>
+        <a href="{{url_for('login')}}">Log In</a>
+        {% endif %}
+      </div>
+    </header>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="container">
+      {% for message in messages %}
+      <p>{{ message }} <a href="{{request.path}}">Dismiss</a></p>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+    <main class="container">{% block content %}{% endblock content %}</main>
+    <footer class="container">
+      <p class="footer">
+        <a href="https://twitter.com/Ze_Austin" class="twitter" target="_blank"
+          >@Ze_Austin</a
+        >,
+        <a href="https://altschoolafrica.com/schools/engineering" target="_blank"
+          >AltSchool Africa</a
+        >
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body {
+  margin: 0;
+  text-align: center;
+  background-color: #eee;
+  color: midnightblue;
+  font-size: 20px;
+}
+header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: darkmagenta;
+  min-height: 50px;
+  max-height: auto;
+}
+header > * {
+  flex: 1 1 auto;
+}
+.nav-bar,
+.logo-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+.logo {
+  border-radius: 60px / 20px;
+}
+header a {
+  margin: 10px;
+  color: floralwhite;
+  text-decoration: none;
+  white-space: nowrap;
+}
+header a:hover {
+  color: darkgray;
+  transition: 0.3s;
+}
+a {
+  text-decoration: none;
+  color: darkmagenta;
+}
+a:hover {
+  color: fuchsia;
+  transition: 0.3s;
+}
+.wave {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.container {
+  width: 50%;
+  margin: auto;
+}
+.form-control {
+  width: 100%;
+}
+label {
+  display: block;
+  margin: 2px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.button {
+  background-color: midnightblue;
+  max-width: fit-content;
+  color: floralwhite;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: blue;
+  transition: 0.3s;
+}
+/* .table_wrapper {
+  width: 100%;
+  margin: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+th {
+  width: 200px;
+  background-color: darkmagenta;
+  color: floralwhite;
+  padding: 10px;
+  border: 1px dotted midnightblue;
+}
+td {
+  padding: 8px;
+  border: 1px dotted midnightblue;
+}
+p {
+  margin: 1em;
+} */
+footer {
+  color: midnightblue;
+  padding: 20px;
+}
+.twitter {
+  text-decoration: none;
+  color: #1da1f2;
+}
+@media (max-width: 840px) {
+  .container {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
