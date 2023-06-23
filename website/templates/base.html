@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="{{url_for('static',filename= 'css/main.css')}}"
     />
-    <title>Scissor</title>
+    <title>{% block title %}{% endblock title %} - Scissor</title>
   </head>
   <body>
     <header>
