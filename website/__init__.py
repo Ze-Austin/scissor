@@ -14,9 +14,13 @@ load_dotenv()
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 
+# uri = os.environ.get('DATABASE_URL')
+# if uri.startswith('postgres://'):
+#     uri = uri.replace('postgres://', 'postgresql://', 1)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
     os.path.join(base_dir, 'scissor.db')
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+# app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['CACHE_TYPE'] = 'SimpleCache'
@@ -24,8 +28,6 @@ app.config['CACHE_DEFAULT_TIMEOUT'] = 300
 app.config.update(
     UPLOAD_PATH = os.path.join(base_dir, 'static', 'qr-codes')
 )
-# ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME')
-# ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD') 
 
 cache = Cache(app)
 limiter = Limiter(get_remote_address)
