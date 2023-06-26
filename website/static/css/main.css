@@ -181,4 +181,10 @@ footer {
     width: 100%;
     padding: 1rem;
   }
+  .dashboard {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+  }
 }
