@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user, logout_user, login_required
 from . import app, db, cache, limiter, qr
 from .models import User, Link
-import random, string, requests
+import random, string, requests, os
 
 
 def generate_short_link(length=5):
@@ -113,7 +113,11 @@ def redirect_link(short_link):
 @login_required
 def delete(short_link):
     link = Link.query.filter_by(short_link=short_link).first()
+    qr_code_path = link.qr_code_path
+    full_qr_code_path = f"{app.config['UPLOAD_PATH']}/{qr_code_path}"
+
     if link:
+        os.remove(full_qr_code_path)
         db.session.delete(link)
         db.session.commit()
         return redirect(url_for('dashboard'))
