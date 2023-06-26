@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Link History{% endblock title %}
+{% block content %}
+<section class="container">
+{% if links %}
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+          <th>Short Link</th>
+          <th>Original Link</th>
+          <th>Analytics</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for link in links %}
+        <tr>
+          <td><a href="{{ url_for('redirect_link', short_link=link.short_link) }}" target="_blank">{{host}}{{link.short_link}}</a></td>
+          <td><a href="{{ link.long_link }}" target="_blank">{{link.long_link}}</a></td>
+          <td><a href="{{ url_for('analytics', short_link=link.short_link) }}">Analytics</a></td>
+          <td><a href="{{ url_for('update', short_link=link.short_link) }}">Edit</a></td>
+          <td><a href="{{ url_for('delete', short_link=link.short_link) }}">Delete</a></td>
+	      </tr>
+	    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<small>You do not have any links yet. <a href="{{url_for('index')}}">Create Some</a> </small>
+{% endif %}
+</section>
+{% endblock content %}

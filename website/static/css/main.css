@@ -44,6 +44,7 @@ header a:hover {
 a {
   text-decoration: none;
   color: darkmagenta;
+  overflow-wrap: break-word;
 }
 a:hover {
   color: fuchsia;
@@ -83,6 +84,44 @@ a:hover {
   }
 }
 .container {
+  width: 75%;
+  margin: auto;
+}
+.dashboard {
+  padding: 100px 20px;
+  max-width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+.card {
+  width: 100%;
+  border: 2px darkmagenta dotted;
+  padding: 15px;
+  border-radius: 5px;
+}
+.card-qrcode {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-body {
+  width: auto;
+}
+.card-body p {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+#copiedLink {
+  all: inherit;
+  width: 100%;
+}
+.form-container {
   width: 50%;
   margin: auto;
 }
@@ -107,7 +146,7 @@ label {
   background-color: blue;
   transition: 0.3s;
 }
-/* .table_wrapper {
+.table-wrapper {
   width: 100%;
   margin: auto;
   overflow-x: auto;
@@ -126,7 +165,7 @@ td {
 }
 p {
   margin: 1em;
-} */
+}
 footer {
   color: midnightblue;
   padding: 20px;
@@ -136,9 +175,10 @@ footer {
   color: #1da1f2;
 }
 @media (max-width: 840px) {
-  .container {
+  .container,
+  .form-container,
+  .table-wrapper {
     width: 100%;
     padding: 1rem;
   }
 }
-

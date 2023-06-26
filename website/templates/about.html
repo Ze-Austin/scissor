@@ -2,9 +2,23 @@
 {% block title %}About{% endblock title %}
 
 {% block content %}
-{% if current_user.is_authenticated %}
-<h2>Hello, {{ current_user.username }}! <span class="wave">👋🏾</span></h2>
-{% else %}
-<h2>Hello and Welcome! <span class="wave">👋🏾</span></h2>
-{% endif %}
+<section class="container">
+  {% if current_user.is_authenticated %}
+  <h2>Welcome to Scissor, {{ current_user.username }}! <span class="wave">👋🏾</span></h2>
+  {% else %}
+  <h2>Welcome to Scissor! <span class="wave">👋🏾</span></h2>
+  {% endif %}
+    
+  <h3>"Brief is the new Black"</h3>
+  
+  <p>This is what inspires the team at Scissor</p>
+    
+  <p>In today's world, it's important to keep things as short as possible</p> 
+  
+  <p>This applies to more concepts than you may realize</p>
+    
+  <p>From music to speeches to wedding receptions, brief is the new black</p>
+    
+  <p>Scissor is a simple tool which makes URLs as short as possible</p>
+</section>
 {% endblock content %}

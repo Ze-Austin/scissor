@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Link Shortener{% endblock title %}
+{% block content %}
+<section class="container">
+  <h2>Access Denied</h2>
+  <small>
+    <a href="{{url_for('register')}}">Sign Up</a>, <a href="{{url_for('login')}}">Log In</a> or <a href="{{url_for('index')}}">Return Home</a>
+  </small>
+</section>
+{% endblock content %}

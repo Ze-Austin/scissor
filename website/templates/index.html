@@ -1,10 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock title %}
-
+{% block title %}Link Shortener{% endblock title %}
 {% block content %}
 {% if current_user.is_authenticated %}
-<h2>Welcome to Scissor, {{current_user.username}}! <span class="wave">👋🏾</span></h2>
+<h2>Welcome, {{ current_user.username }}! <span class="wave">👋🏾</span></h2>
+<br>
+<form action="{{url_for('index')}}" method="POST" class="form-container">
+  <div class="form-group">
+    <label for="long_link">Original Link</label>
+    <input type="url" name="long_link" class="form-control" placeholder="https://example.com/long-link" required>
+  </div>
+  <div class="form-group">
+    <label for="custom_path">Custom Back-Half (Optional)</label>
+    <input type="text" name="custom_path" class="form-control" placeholder="Example: sciz.site/custom-back-half">
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Shorten Link" class="button"/>
+  </div>
+</form>
 {% else %}
-<h2>Welcome to Scissor! <span class="wave">👋🏾</span></h2>
+<div class="logo-container">
+  <img
+    src="{{url_for('static',filename= 'scissor-logo/vector/default-monochrome.svg')}}"
+    alt="Logo"
+    width="50%"
+    class="logo"
+  />
+</div>
+<h3>...brief is the new black</h3>
+<small>
+  <a href="{{url_for('register')}}">Sign up</a> or <a href="{{url_for('login')}}">log in</a> to shorten links for free
+</small>
 {% endif %}
 {% endblock content %}

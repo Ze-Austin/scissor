@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+{% if current_user.is_authenticated %}
+  {% if links %}
+    <section class="dashboard">
+      {% for link in links %}
+        <div class="card">
+          <div class="card-body">
+            <img class="card-qrcode" src="{{ url_for('static', filename='qr-codes/' + link.qr_code_path, _external=True) }}" alt="QR Code">
+            <br>
+            <small>
+              Created: {{link.created_at.strftime('%B %d, %Y')}} || Clicks: {{link.clicks}}
+            </small>
+            <p>
+              Original Link: <br>
+              <a href="{{link.long_link}}" target="_blank">{{link.long_link}}</a>
+            </p>
+            <p>
+              Shortened Link: <br>
+              <a href="{{url_for('redirect_link', short_link=link.short_link)}}" target="_blank">{{host}}{{link.short_link}}</a>
+            </p>
+            <a href="{{ url_for('update', short_link=link.short_link) }}">
+              <button class="button">Edit Link</button>
+            </a>
+            <a href="{{ url_for('static', filename='qr-codes/' + link.qr_code_path, _external=True) }}" download="qrcode image">
+              <button class="button">Download QR Code</button>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+  {% else %}
+    <small>
+      You do not have any links yet. <a href="{{url_for('index')}}">Create Some</a>
+    </small>
+  {% endif %}
+{% else %}
+  <small>
+    <a href="{{url_for('login')}}">Log in</a> to see your links
+  </small>
+{% endif %}
+{% endblock content %}

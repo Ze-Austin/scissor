@@ -19,9 +19,10 @@ class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     long_link = db.Column(db.String())
     short_link = db.Column(db.String(10), unique=True)
-    custom_link = db.Column(db.String(50), unique=True, default=None)
+    custom_path = db.Column(db.String(50), unique=True, default=None)
     clicks = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+    qr_code_path = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
 
     def __repr__(self):

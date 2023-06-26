@@ -17,21 +17,20 @@
           <img
             src="{{url_for('static',filename= 'scissor-logo/default.png')}}"
             alt="Logo"
-            width="120"
-            height="40"
+            width="180"
+            height="60"
             class="logo"
           />
         </a>
       </div>
       <div class="nav-bar">
-        {% if current_user.is_authenticated %}
         <a href="{{url_for('index')}}">Home</a>
         <a href="{{url_for('about')}}">About</a>
-        <!-- <a href="{{url_for('links')}}">Links</a> -->
+        {% if current_user.is_authenticated %}
+        <a href="{{url_for('dashboard')}}">Dashboard</a>
+        <a href="{{url_for('history')}}">History</a>
         <a href="{{url_for('logout')}}">Log Out</a>
         {% else %}
-        <a href="{{url_for('index')}}">Home</a>
-        <a href="{{url_for('about')}}">About</a>
         <a href="{{url_for('register')}}">Sign Up</a>
         <a href="{{url_for('login')}}">Log In</a>
         {% endif %}
@@ -44,7 +43,7 @@
       {% endfor %}
     </div>
     {% endif %} {% endwith %}
-    <main class="container">{% block content %}{% endblock content %}</main>
+    <main>{% block content %}{% endblock content %}</main>
     <footer class="container">
       <p class="footer">
         <a href="https://twitter.com/Ze_Austin" class="twitter" target="_blank"

@@ -2,14 +2,13 @@
 {% block title %}Log In{% endblock title %}
 
 {% block content %}
-<form action="{{url_for('login')}}" method="POST">
+<form action="{{url_for('login')}}" method="POST" class="form-container">
   <div class="form-group">
     <h3>Log In</h3>
   </div>
   <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" name="username" class="form-control"/>
-  </div>
+    <label for="email">Email</label>
+    <input type="email" name="email" class="form-control"/>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
