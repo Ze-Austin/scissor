@@ -28,7 +28,7 @@ header > * {
   align-content: center;
   justify-content: center;
 }
-.logo {
+.header-logo {
   border-radius: 15px;
 }
 header a {
