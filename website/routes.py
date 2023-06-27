@@ -1,9 +1,9 @@
 from flask import flash, render_template, url_for, request, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user, logout_user, login_required
-from . import app, db, cache, limiter, qr
+from . import app, db, cache, limiter
 from .models import User, Link
-import random, string, requests, io
+import random, string, requests, io, qrcode
 
 
 def generate_short_link(length=5):
@@ -13,9 +13,7 @@ def generate_short_link(length=5):
 
 
 def generate_qr_code(link):
-    qr.add_data(link)
-    qr.make(fit=True)
-    image = qr.make_image(fill_color="darkmagenta", back_color="#eee")
+    image = qrcode.make(link)
     image_io = io.BytesIO()
     image.save(image_io, 'PNG')
     image_io.seek(0)
@@ -113,7 +111,7 @@ def generate_qr_code_link(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
 
     if link:
-        image_io = generate_qr_code(link.long_link)
+        image_io = generate_qr_code(request.host_url + link.short_link)
         return image_io.getvalue(), 200, {'Content-Type': 'image/png'}
     
     return render_template('404.html')

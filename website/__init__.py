@@ -6,7 +6,7 @@ from flask_caching import Cache
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from dotenv import load_dotenv
-import os, qrcode
+import os
 
 app = Flask(__name__)
 
@@ -28,13 +28,6 @@ app.config['CACHE_DEFAULT_TIMEOUT'] = 300
 
 cache = Cache(app)
 limiter = Limiter(get_remote_address)
-
-qr = qrcode.QRCode(
-    version = 1,
-    error_correction = qrcode.constants.ERROR_CORRECT_L,
-    box_size = 5,
-    border = 4
-)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
