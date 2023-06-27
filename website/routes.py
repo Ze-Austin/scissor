@@ -107,8 +107,6 @@ def redirect_link(short_link):
 
 @app.route('/<short_link>/qr_code')
 @login_required
-@cache.cached(timeout=30)
-@limiter.limit('10/minutes')
 def generate_qr_code_link(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
 
