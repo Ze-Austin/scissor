@@ -113,7 +113,7 @@ def generate_qr_code_link(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
 
     if link:
-        image_io = generate_qr_code(request.host_url + link.short_link)
+        image_io = generate_qr_code(link.long_link)
         return image_io.getvalue(), 200, {'Content-Type': 'image/png'}
     
     return render_template('404.html')
