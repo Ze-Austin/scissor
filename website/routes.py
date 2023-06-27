@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user, logout_user, login_required
 from . import app, db, cache, limiter, qr
 from .models import User, Link
-import random, string, requests, os
+import random, string, requests, io
 
 
 def generate_short_link(length=5):
@@ -12,14 +12,14 @@ def generate_short_link(length=5):
     return short_link
 
 
-def generate_qr_code(link, filename):
+def generate_qr_code(link):
     qr.add_data(link)
     qr.make(fit=True)
     image = qr.make_image(fill_color="darkmagenta", back_color="#eee")
-    image_name = f"qr_code_{filename}.png"
-    image_path = f"{app.config['UPLOAD_PATH']}/{image_name}"
-    image.save(image_path)
-    return image_name
+    image_io = io.BytesIO()
+    image.save(image_io, 'PNG')
+    image_io.seek(0)
+    return image_io
 
 
 @app.errorhandler(404)
@@ -64,9 +64,7 @@ def index():
                 if not short_link_exists:
                     break
         
-        qr_code_path = generate_qr_code(long_link, short_link)
-        link = Link(long_link=long_link, short_link=short_link, custom_path=custom_path, 
-                    qr_code_path=qr_code_path, user_id=current_user.id)
+        link = Link(long_link=long_link, short_link=short_link, custom_path=custom_path, user_id=current_user.id)
         db.session.add(link)
         db.session.commit()
         return redirect(url_for('dashboard'))
@@ -81,7 +79,6 @@ def about():
 
 @app.route('/dashboard')
 @login_required
-@cache.cached(timeout=30)
 def dashboard():
     links = Link.query.filter_by(user_id=current_user.id).order_by(Link.created_at.desc()).all()
     host = request.host_url
@@ -90,7 +87,6 @@ def dashboard():
 
 @app.route('/history')
 @login_required
-@cache.cached(timeout=30)
 def history():
     links = Link.query.filter_by(user_id=current_user.id).order_by(Link.created_at.desc()).all()
     host = request.host_url
@@ -109,15 +105,26 @@ def redirect_link(short_link):
         return render_template('404.html')
 
 
+@app.route('/<short_link>/qr_code')
+@login_required
+@cache.cached(timeout=30)
+@limiter.limit('10/minutes')
+def generate_qr_code_link(short_link):
+    link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
+
+    if link:
+        image_io = generate_qr_code(request.host_url + link.short_link)
+        return image_io.getvalue(), 200, {'Content-Type': 'image/png'}
+    
+    return render_template('404.html')
+
+
 @app.route('/<short_link>/delete')
 @login_required
 def delete(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
 
     if link:
-        qr_code_path = link.qr_code_path
-        full_qr_code_path = f"{app.config['UPLOAD_PATH']}/{qr_code_path}"
-        os.remove(full_qr_code_path)
         db.session.delete(link)
         db.session.commit()
         return redirect(url_for('dashboard'))
@@ -149,7 +156,6 @@ def update(short_link):
 
 @app.route('/<short_link>/analytics')
 @login_required
-@cache.cached(timeout=50)
 def analytics(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
     host = request.host_url

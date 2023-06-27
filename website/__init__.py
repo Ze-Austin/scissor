@@ -25,9 +25,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['CACHE_TYPE'] = 'SimpleCache'
 app.config['CACHE_DEFAULT_TIMEOUT'] = 300
-app.config.update(
-    UPLOAD_PATH = os.path.join(base_dir, 'static', 'qr-codes')
-)
 
 cache = Cache(app)
 limiter = Limiter(get_remote_address)
