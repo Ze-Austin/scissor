@@ -107,6 +107,8 @@ Creating this tool helped to learn and practice:
 * Responsive Web Design
 * URL Shortening
 * QR Code Generation
+* Rate Limiting
+* Caching
 * Debugging
 * Routing
 * Database Management
