@@ -87,6 +87,11 @@ a:hover {
   width: 75%;
   margin: auto;
 }
+.analytics-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 .dashboard {
   padding: 100px 20px;
   max-width: 100%;
@@ -101,6 +106,9 @@ a:hover {
   border: 2px darkmagenta dotted;
   padding: 15px;
   border-radius: 5px;
+}
+.analytics-card {
+  max-width: 40%;
 }
 .card-qrcode {
   width: 100%;
@@ -186,5 +194,8 @@ footer {
     flex-flow: row wrap;
     align-content: center;
     justify-content: center;
+  }
+  .analytics-card {
+    max-width: 100%;
   }
 }

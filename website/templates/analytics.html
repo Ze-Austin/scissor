@@ -3,8 +3,8 @@
 {% block content %}
 {% if current_user.is_authenticated %}
   {% if link %}
-    <section class="dashboard" style="display: flex; justify-content: center;">
-      <div class="card" style="max-width: 40%;">
+    <section class="container analytics-container">
+      <div class="card analytics-card">
         <div class="card-body">
           <img class="card-qrcode" src="{{ url_for('static', filename='qr-codes/' + link.qr_code_path, _external=True) }}" alt="QR Code">
           <br>

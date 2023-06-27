@@ -82,6 +82,8 @@ Scissor converts long URLs into easily sharable QR codes and short, customizable
 
 This tool was built as a capstone project by <a href="https://www.github.com/Ze-Austin">Ze Austin</a>, a Backend Engineering student at <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a> who's learning to create magic with Python.
 
+Live Site: [sciz.site](https://www.sciz.site)
+
 Full Documentation: [Scissor Wiki](https://github.com/Ze-Austin/scissor/wiki)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
@@ -194,7 +196,7 @@ Distributed under the MIT License. See <a href="https://github.com/Ze-Austin/sci
 
 Dr Austin Wopara - [@Ze_Austin](https://twitter.com/Ze_Austin) - austinwopara@gmail.com
 
-Live Link: [sciz.site](https://www.sciz.site)
+Live Site: [sciz.site](https://www.sciz.site)
 
 Project Link: [Scissor Repo](https://github.com/Ze-Austin/scissor)
 
