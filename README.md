@@ -82,6 +82,8 @@ Scissor converts long URLs into easily sharable QR codes and short, customizable
 
 This tool was built as a capstone project by <a href="https://www.github.com/Ze-Austin">Ze Austin</a>, a Backend Engineering student at <a href="https://altschoolafrica.com/schools/engineering">AltSchool Africa</a> who's learning to create magic with Python.
 
+Full Documentation: [Scissor Wiki](https://github.com/Ze-Austin/scissor/wiki)
+
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 ### Built With:
@@ -123,7 +125,7 @@ This tool can be accessed via the deployed site or a local copy of the project.
 
 ### Live Link
 
-Deployed site: [sciz.site](https://www.sciz.site) - hosted via [namecheap](https://www.namecheap.com) 
+Deployed site: [sciz.site](https://www.sciz.site) - hosted via [render](https://www.render.com) 
 
 ### Localhost
 
@@ -166,6 +168,10 @@ Python3: [Get Python](https://www.python.org/downloads/)
 
 <br/>
 
+---
+
+<br/>
+
 [![Dashboard Screenshot][dashboard-screenshot]](https://github.com/Ze-Austin/scissor/blob/main/website/static/screenshots/dashboard.png)
 
 <br/>
@@ -188,9 +194,11 @@ Distributed under the MIT License. See <a href="https://github.com/Ze-Austin/sci
 
 Dr Austin Wopara - [@Ze_Austin](https://twitter.com/Ze_Austin) - austinwopara@gmail.com
 
-Project Link: [Scissor](https://github.com/Ze-Austin/scissor)
-
 Live Link: [sciz.site](https://www.sciz.site)
+
+Project Link: [Scissor Repo](https://github.com/Ze-Austin/scissor)
+
+Documentation: [Scissor Wiki](https://github.com/Ze-Austin/scissor/wiki)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 

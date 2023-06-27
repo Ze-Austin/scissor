@@ -38,19 +38,19 @@ def index():
     if request.method == 'POST':
         long_link = request.form['long_link']
         custom_path = request.form['custom_path'] or None
-        long_link_exists = Link.query.filter_by(long_link=long_link).first()
+        long_link_exists = Link.query.filter_by(user_id=current_user.id).filter_by(long_link=long_link).first()
 
         if requests.get(long_link).status_code != 200:
             return render_template('404.html')
 
         elif long_link_exists:
             flash ('This link has already been shortened.')
-            return redirect(url_for('index'))
+            return redirect(url_for('dashboard'))
 
         elif custom_path:
             path_exists = Link.query.filter_by(custom_path=custom_path).first()
             if path_exists:
-                flash ('That custom path is taken. Please try another')
+                flash ('That custom path is taken. Please try another.')
                 return redirect(url_for('index'))
             short_link = custom_path
 
@@ -112,15 +112,16 @@ def redirect_link(short_link):
 @app.route('/<short_link>/delete')
 @login_required
 def delete(short_link):
-    link = Link.query.filter_by(short_link=short_link).first()
-    qr_code_path = link.qr_code_path
-    full_qr_code_path = f"{app.config['UPLOAD_PATH']}/{qr_code_path}"
+    link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
 
     if link:
+        qr_code_path = link.qr_code_path
+        full_qr_code_path = f"{app.config['UPLOAD_PATH']}/{qr_code_path}"
         os.remove(full_qr_code_path)
         db.session.delete(link)
         db.session.commit()
         return redirect(url_for('dashboard'))
+    
     return render_template('404.html')
 
 
@@ -128,7 +129,7 @@ def delete(short_link):
 @login_required
 @limiter.limit('10/minutes')
 def update(short_link):
-    link = Link.query.filter_by(short_link=short_link).first()
+    link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
     host = request.host_url
     if link:
         if request.method == 'POST':
@@ -150,7 +151,7 @@ def update(short_link):
 @login_required
 @cache.cached(timeout=50)
 def analytics(short_link):
-    link = Link.query.filter_by(short_link=short_link).first()
+    link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
     host = request.host_url
     if link:
         return render_template('analytics.html', link=link, host=host)
