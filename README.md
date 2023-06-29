@@ -239,8 +239,8 @@ This project was made possible by:
 [license-url]: https://github.com/Ze-Austin/scissor/blob/main/LICENSE.txt
 [twitter-shield]: https://img.shields.io/badge/-@ze_austin-1ca0f1?style=for-the-badge&logo=twitter&logoColor=white&link=https://twitter.com/ze_austin
 [twitter-url]: https://twitter.com/ze_austin
-[scissor-screenshot]: website/static/screenshots/scissor.png
-[dashboard-screenshot]: website/static/screenshots/dashboard.png
+[scissor-screenshot]: website/static/screenshots/scissor-home.png
+[dashboard-screenshot]: website/static/screenshots/scissor-dashboard.png
 [python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [flask]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
 [jinja]: https://img.shields.io/badge/jinja-white.svg?style=for-the-badge&logo=jinja&logoColor=black
