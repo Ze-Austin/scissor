@@ -168,7 +168,7 @@ Python3: [Get Python](https://www.python.org/downloads/)
 
 <br />
 
-[![Scissor Screenshot][scissor-screenshot]](https://github.com/Ze-Austin/scissor/blob/main/website/static/screenshots/scissor.png)
+[![Scissor Screenshot][scissor-screenshot]](https://github.com/Ze-Austin/scissor/blob/main/website/static/screenshots/scissor-home.png)
 
 <br/>
 
@@ -176,7 +176,7 @@ Python3: [Get Python](https://www.python.org/downloads/)
 
 <br/>
 
-[![Dashboard Screenshot][dashboard-screenshot]](https://github.com/Ze-Austin/scissor/blob/main/website/static/screenshots/dashboard.png)
+[![Dashboard Screenshot][dashboard-screenshot]](https://github.com/Ze-Austin/scissor/blob/main/website/static/screenshots/scissor-dashboard.png)
 
 <br/>
 
