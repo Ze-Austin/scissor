@@ -217,7 +217,7 @@ This project was made possible by:
 * [Caleb Emelike's Flask Lessons](https://github.com/CalebEmelike)
 * [My AltSchool Python Repo](https://github.com/Ze-Austin/altschool-python)
 * [GitHub Student Pack](https://education.github.com/globalcampus/student)
-* [namecheap](https://www.namecheap.com)
+* [NameCheap Logo Maker](https://www.namecheap.com/logo-maker/)
 * [Othneil Drew's README Template](https://github.com/othneildrew/Best-README-Template)
 * [Ileriayo's Markdown Badges](https://github.com/Ileriayo/markdown-badges)
 * [Stack Overflow](https://stackoverflow.com/)
