@@ -27,6 +27,8 @@
     <a href="https://github.com/Ze-Austin/scissor/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
+    <a href="https://sciz.site">Live Site</a>
+    ·
     <a href="#sample">View Demo</a>
     ·
     <a href="https://github.com/Ze-Austin/scissor/issues">Report Bug</a>
