@@ -31,7 +31,7 @@ def error_404(error):
 
 
 @app.route('/', methods=['GET', 'POST'])
-@limiter.limit('10/minutes')
+@limiter.limit('10/minute')
 def index():
     if request.method == 'POST':
         long_link = request.form['long_link']
@@ -106,7 +106,7 @@ def redirect_link(short_link):
 @app.route('/<short_link>/qr_code')
 @login_required
 @cache.cached(timeout=30)
-@limiter.limit('10/minutes')
+@limiter.limit('10/minute')
 def generate_qr_code_link(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
 
@@ -132,7 +132,7 @@ def delete(short_link):
 
 @app.route('/<short_link>/edit', methods=['GET', 'POST'])
 @login_required
-@limiter.limit('10/minutes')
+@limiter.limit('10/minute')
 def update(short_link):
     link = Link.query.filter_by(user_id=current_user.id).filter_by(short_link=short_link).first()
     host = request.host_url
